@@ -3,7 +3,7 @@
     <style name="Theme.UNLeeG8" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/red_orange</item>
-        <item name="colorPrimaryDark">@color/red</item>
+        <item name="colorPrimaryDark">@color/color_barra_arriba</item>
         <item name="colorAccent">@color/secondarycolor</item>
         <!-- Customize your theme here. -->
     </style>
