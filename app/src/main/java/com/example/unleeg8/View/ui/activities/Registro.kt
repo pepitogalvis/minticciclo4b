@@ -1,5 +1,6 @@
 package com.example.unleeg8.View.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -28,8 +29,6 @@ class Registro : AppCompatActivity() {
     }
 
 
-
-
     private fun createAccount(email: String, password: String) {
         // [START create_user_with_email]
         auth.createUserWithEmailAndPassword(email, password)
@@ -38,6 +37,7 @@ class Registro : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     Toast.makeText(this, "Usuario Creado Satisfactoriamente",Toast.LENGTH_LONG).show()
+                    sendEmailVerification()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
@@ -52,7 +52,20 @@ class Registro : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        setContentView(R.layout.activity_login)
+        val intent = Intent(this, login::class.java)
+        intent.setAction(Intent.ACTION_VIEW)
+        startActivity(intent)
+    }
+
+
+    private fun sendEmailVerification() {
+        // [START send_email_verification]
+        val user = auth.currentUser!!
+        user.sendEmailVerification()
+            .addOnCompleteListener(this) { task ->
+                // Email Verification sent
+            }
+        // [END send_email_verification]
     }
 
 

@@ -13,17 +13,25 @@
         android:theme="@style/Theme.UNLeeG8"
         tools:targetApi="31">
         <activity
+            android:name=".View.ui.activities.Home"
+            android:exported="false"
+            android:label="Inicio">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.ui.activities.login"
-            android:label="Iniciar Sesión"
-            android:exported="false">
+            android:exported="false"
+            android:label="Iniciar Sesión">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".View.ui.activities.Registro"
-            android:label="Registrarse"
-            android:exported="false">
+            android:exported="false"
+            android:label="Registrarse">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
