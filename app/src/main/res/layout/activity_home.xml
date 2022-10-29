@@ -6,35 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".View.ui.activities.Home">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="325dp"
-        android:layout_marginTop="631dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="44dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logout_24" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="235dp"
-        android:layout_height="267dp"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="417dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_app" />
-
     <TextView
         android:id="@+id/msg_bienvenida"
         android:layout_width="102dp"
@@ -49,4 +20,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/salida"
+        android:layout_width="47dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="333dp"
+        android:layout_marginTop="641dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/ic_logout_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="252dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="431dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icono_app" />
 </androidx.constraintlayout.widget.ConstraintLayout>

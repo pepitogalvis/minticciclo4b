@@ -53,7 +53,7 @@ class login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this, "Autenticacion Correcta",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Autenticacion Correcta",Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
