@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlin.math.sign
 
 class login : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class login : AppCompatActivity() {
         auth = Firebase.auth
         val email_login: TextView = findViewById(R.id.login_email)
         val contrasena_login: TextView = findViewById(R.id.login_password)
-        val boton_registro: Button = findViewById(R.id.registro)
+        val boton_registro: Button = findViewById(R.id.boton_registro)
         val boton_inicio: Button = findViewById(R.id.btn_login)
 
         boton_inicio.setOnClickListener {
