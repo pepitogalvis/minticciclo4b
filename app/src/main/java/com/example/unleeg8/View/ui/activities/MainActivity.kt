@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import com.example.unleeg8.R
 import com.example.unleeg8.databinding.ActivityMainBinding
-import kotlinx.coroutines.delay
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
