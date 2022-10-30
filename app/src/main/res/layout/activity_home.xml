@@ -8,12 +8,12 @@
 
     <TextView
         android:id="@+id/msg_bienvenida"
-        android:layout_width="102dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="159dp"
+        android:layout_width="207dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="107dp"
         android:layout_marginTop="354dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="336dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginBottom="342dp"
         android:text="Bienvenidos... (Home)"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"

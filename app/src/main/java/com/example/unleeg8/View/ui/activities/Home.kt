@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.unleeg8.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlin.system.exitProcess
@@ -25,17 +26,15 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         auth = Firebase.auth
         val user = Firebase.auth.currentUser
-        val user_email = user?.email.toString()
         val nombre_usuario = user?.displayName.toString()
         val texto_bienvenida: TextView = findViewById(R.id.msg_bienvenida)
         val boton_salida: Button = findViewById(R.id.salida)
 
         if (user != null) {
             texto_bienvenida.text = "Bienvenido $nombre_usuario"
-            Log.d(TAG, "Usuario Logueado con exito: $user_email")
-            Log.d(TAG, "Usuario Logueado con exito: $nombre_usuario")
         } else {
-            Log.d(TAG, "No hay usuario registrado")
+            updateUI(user)
+            Toast.makeText(this, "Por favor inicie sesión",Toast.LENGTH_SHORT).show()
 
         }
 
@@ -53,6 +52,12 @@ class Home : AppCompatActivity() {
         startActivity(intent)
 
         // [END auth_sign_out]
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        val intent = Intent(this, login::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
 }
