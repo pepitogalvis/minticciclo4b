@@ -63,7 +63,7 @@ class Registro : AppCompatActivity() {
                     nombre_mascota
                 )
             } else {
-                Toast.makeText(this, "Por favor complete los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor verifique la información", Toast.LENGTH_SHORT).show()
             }
         }
     }

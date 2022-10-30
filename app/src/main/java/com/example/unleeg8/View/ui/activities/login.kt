@@ -32,14 +32,20 @@ class login : AppCompatActivity() {
         boton_inicio.setOnClickListener {
             signInEmail = email_login.text.toString().trim()
             signInPassword = contrasena_login.text.toString().trim()
-            signIn(signInEmail,signInPassword)
+
+            if (notEmpty()){
+                signIn(signInEmail,signInPassword)
+            } else {
+                Toast.makeText(this, "Por favor valide su información de acceso",Toast.LENGTH_SHORT).show()
             }
+
+        }
         boton_registro.setOnClickListener { iniciar_registro() }
     }
 
+    private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()
+
     private fun iniciar_registro() {
-        /* Toast.makeText(this, "auch me clicaste",
-             Toast.LENGTH_SHORT).show()*/
         val intent = Intent(this, Registro::class.java)
         intent.setAction(Intent.ACTION_VIEW)
         startActivity(intent)
@@ -60,10 +66,7 @@ class login : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Por favor verifique sus datos de inicio de sesión.",
-                        Toast.LENGTH_LONG).show()
-                    val user = auth.currentUser
-                    updateUIError(user)
-                }
+                        Toast.LENGTH_SHORT).show()                }
             }
         // [END sign_in_with_email]
     }
@@ -72,9 +75,7 @@ class login : AppCompatActivity() {
         startActivity(Intent(this, Home::class.java))
     }
 
-    private fun updateUIError(user: FirebaseUser?) {
-        startActivity(Intent(this, login::class.java))
-    }
+
 
 
 }

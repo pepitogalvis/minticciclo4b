@@ -48,7 +48,10 @@ class Home : AppCompatActivity() {
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()
-        exitProcess(0)
+        val intent = Intent(this, login::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+
         // [END auth_sign_out]
     }
 
