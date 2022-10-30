@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.unleeg8.R
@@ -24,10 +25,15 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = Firebase.auth
-        val email_login: TextView = findViewById(R.id.login_email)
-        val contrasena_login: TextView = findViewById(R.id.login_password)
+        val email_login: EditText = findViewById(R.id.login_email)
+        val contrasena_login: EditText = findViewById(R.id.login_password)
         val boton_registro: Button = findViewById(R.id.boton_registro)
         val boton_inicio: Button = findViewById(R.id.btn_login)
+        val boton_recuperacion: TextView = findViewById(R.id.recuperar_contrasena)
+
+        boton_recuperacion.setOnClickListener{
+            iniciar_recuperacion()
+        }
 
         boton_inicio.setOnClickListener {
             signInEmail = email_login.text.toString().trim()
@@ -72,7 +78,15 @@ class login : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        startActivity(Intent(this, Home::class.java))
+        val intent = Intent(this, Home::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
+    private fun iniciar_recuperacion() {
+        val intent = Intent(this, Recuperar::class.java)
+        startActivity(intent)
+
     }
 
 

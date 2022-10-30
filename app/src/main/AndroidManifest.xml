@@ -37,6 +37,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".View.ui.activities.Recuperar"
+            android:exported="false"
+            android:label="Reiniciar Contraseña">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
