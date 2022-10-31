@@ -21,6 +21,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".View.ui.activities.DashboardActivity"
+            android:exported="false"
+            android:label="Inicio">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.ui.activities.login"
             android:exported="false"
             android:label="Iniciar Sesión">
