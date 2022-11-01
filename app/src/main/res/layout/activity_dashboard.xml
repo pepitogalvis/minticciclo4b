@@ -7,12 +7,23 @@
     android:background="#ffffff"
     tools:context=".View.ui.activities.DashboardActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNav"
-        />
+        android:layout_above="@+id/bottomNav">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="47dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="348dp"
+            android:layout_marginTop="584dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="17dp"
+            android:background="@drawable/ic_logout_48" />
+
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"

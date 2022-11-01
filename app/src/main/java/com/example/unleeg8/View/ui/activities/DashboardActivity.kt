@@ -2,6 +2,7 @@ package com.example.unleeg8.View.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ class DashboardActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
         val nombre_usuario = user?.displayName.toString()
         val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav)
+        val boton_salida: Button = findViewById(R.id.logout)
         val toolbar = getSupportActionBar()
         if (user != null) {
             Toast.makeText(this, "Bienvenido $nombre_usuario", Toast.LENGTH_SHORT).show()
@@ -35,6 +37,10 @@ class DashboardActivity : AppCompatActivity() {
             updateUI(user)
             Toast.makeText(this, "Por favor inicie sesión", Toast.LENGTH_SHORT).show()
 
+        }
+
+        boton_salida.setOnClickListener{
+            signOut()
         }
 
         bottomNav.setOnItemReselectedListener { item ->
@@ -78,5 +84,14 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, login::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+    }
+    private fun signOut() {
+        // [START auth_sign_out]
+        Firebase.auth.signOut()
+        val intent = Intent(this, login::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+
+        // [END auth_sign_out]
     }
 }
