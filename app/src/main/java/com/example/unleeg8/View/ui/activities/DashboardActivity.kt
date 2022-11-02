@@ -38,10 +38,11 @@ class DashboardActivity : AppCompatActivity() {
             Toast.makeText(this, "Por favor inicie sesión", Toast.LENGTH_SHORT).show()
 
         }
-
         boton_salida.setOnClickListener{
             signOut()
         }
+
+        loadFragment(HomeFragment.newInstance())
 
         bottomNav.setOnItemReselectedListener { item ->
             var fragment: Fragment
