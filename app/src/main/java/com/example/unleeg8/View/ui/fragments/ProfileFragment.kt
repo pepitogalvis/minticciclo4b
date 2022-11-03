@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.unleeg8.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -28,9 +29,8 @@ class ProfileFragment : Fragment() {
     //private var mAuth: FirebaseAuth? = null
     private lateinit var storageReference : StorageReference
     private lateinit var imageUri : Uri
-    private var improfile: ImageView?= null
-
-
+    private lateinit var improfile: ImageView
+    private lateinit var imagen: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,30 +67,26 @@ class ProfileFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     texto_raza!!.text = snapshot.child("breed").value as String
                     texto_telefono!!.text = snapshot.child("phone").value as String
+                    imagen = snapshot.child("image").value as String
+                    try {
+                        Glide.with(activity!!).load(imagen).into(improfile)
+                    } catch (e: Exception) {
+                    }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
         } else {
-
+            Toast.makeText(getActivity(), "Ningún usuario ha iniciado sesión", Toast.LENGTH_SHORT)
+                .show()
         }
 
         boton_guardar.setOnClickListener{
-
-            if (imageUri != null && !imageUri.equals(Uri.EMPTY)) {
                 uploadprofilePic()
-            } else {
-                Toast.makeText(getActivity(), "No hay foto para subir", Toast.LENGTH_SHORT)
-            }
-
-
         }
 
         boton_elegir.setOnClickListener{
-
             selectImage()
-
         }
-
 
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -100,9 +96,18 @@ class ProfileFragment : Fragment() {
     private fun uploadprofilePic(){
         //imageUri = Uri.parse("android.resource://com.example.unleeg8/${R.drawable.westieimg}")
         storageReference = FirebaseStorage.getInstance().getReference("Users/"+auth.currentUser?.uid)
+        val user = auth.currentUser
+        val userId = auth!!.currentUser!!.uid
         storageReference.putFile(imageUri).addOnSuccessListener {
+
+                val resultado = it.metadata!!.reference!!.downloadUrl;
                 Log.d(TAG, "Foto subida con exito")
                 Toast.makeText(getActivity(), "Foto subida con exito", Toast.LENGTH_SHORT).show()
+                resultado.addOnSuccessListener { var imageLink = it.toString()
+                    Log.d(TAG, "URL $imageLink")
+                    val currentUserDb = databaseReference!!.child(userId)
+                    currentUserDb.child("image").setValue(imageLink)
+                }
 
             }.addOnFailureListener {
                 Log.d(TAG, "Falló la subida")
@@ -122,8 +127,6 @@ class ProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-
-
         if (requestCode == 100 && resultCode == RESULT_OK) {
             imageUri = data?.data!!
             improfile?.setImageURI(imageUri)
@@ -132,13 +135,5 @@ class ProfileFragment : Fragment() {
             Toast.makeText(getActivity(),"No se pudo cargar la foto",Toast.LENGTH_SHORT).show()
         }
     }
-
-
-
-
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
-
 
 }

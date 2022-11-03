@@ -10,15 +10,16 @@
 
     <ImageView
         android:id="@+id/profile"
-        android:layout_width="228dp"
-        android:layout_height="234dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="91dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="91dp"
         android:layout_marginBottom="466dp"
-        android:src="@drawable/icono_app" />
+        android:src="@drawable/icono_app"
+        tools:src="@drawable/icono_app" />
 
     <TextView
         android:id="@+id/tv_profile"
@@ -92,7 +93,7 @@
         android:layout_marginBottom="210dp"
         android:gravity="fill|top|left"
         android:hapticFeedbackEnabled="false"
-        android:text="Save"
+        android:text="Guardar"
         android:textAlignment="center" />
 
     <Button

@@ -103,6 +103,8 @@ class Registro : AppCompatActivity() {
                     val currentUserDb = mDatabaseReference!!.child(userId)
                     currentUserDb.child("breed").setValue(raza)
                     currentUserDb.child("phone").setValue(telefono)
+                    currentUserDb.child("image").setValue("https://firebasestorage.googleapis.com/v0/b/unleeg8.appspot.com/o/Users%2FPetbook%20(1).png?alt=media&token=0c7f7834-0f23-407c-bc80-e6c3977f63de")
+
                     Toast.makeText(this, "Usuario Creado Satisfactoriamente",Toast.LENGTH_SHORT).show()
                     updateUI(user)
                 } else {
