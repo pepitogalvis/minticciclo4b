@@ -21,7 +21,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="Clave de Prueba 2"
+            android:value="Sin API KEY"
             />
         <activity
             android:name=".View.ui.activities.Home"
