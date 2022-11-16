@@ -8,10 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.unleeg8.R
-import com.example.unleeg8.View.ui.fragments.HomeFragment
-import com.example.unleeg8.View.ui.fragments.PostFragment
-import com.example.unleeg8.View.ui.fragments.ProfileFragment
-import com.example.unleeg8.View.ui.fragments.UserFragment
+import com.example.unleeg8.View.ui.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -66,8 +63,8 @@ class DashboardActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_users -> {
-                    toolbar?.title = "Usuarios"
-                    fragment = UserFragment()
+                    toolbar?.title = "Mapas"
+                    fragment = ShipFragment()
                     loadFragment(fragment)
                     true
                 }
