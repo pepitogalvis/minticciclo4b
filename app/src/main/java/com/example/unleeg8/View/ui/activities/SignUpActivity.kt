@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
-class Registro : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val TAG = "MyActivity"
@@ -119,7 +119,7 @@ class Registro : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

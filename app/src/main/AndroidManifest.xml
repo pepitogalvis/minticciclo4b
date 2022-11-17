@@ -24,7 +24,7 @@
             android:value="Sin API KEY"
             />
         <activity
-            android:name=".View.ui.activities.Home"
+            android:name=".View.ui.activities.HomeActivity"
             android:exported="false"
             android:label="Inicio">
             <meta-data
@@ -40,7 +40,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.ui.activities.login"
+            android:name=".View.ui.activities.LoginActivity"
             android:exported="false"
             android:label="Iniciar Sesión">
             <meta-data
@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.ui.activities.Registro"
+            android:name=".View.ui.activities.SignUpActivity"
             android:exported="false"
             android:label="Registrarse">
             <meta-data
@@ -56,7 +56,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.ui.activities.Recuperar"
+            android:name=".View.ui.activities.RecoveryPasswordActivity"
             android:exported="false"
             android:label="Reiniciar Contraseña">
             <meta-data

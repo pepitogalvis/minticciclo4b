@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val TAG = "MyActivity"
@@ -52,7 +52,7 @@ class login : AppCompatActivity() {
     private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()
 
     private fun iniciar_registro() {
-        val intent = Intent(this, Registro::class.java)
+        val intent = Intent(this, SignUpActivity::class.java)
         intent.setAction(Intent.ACTION_VIEW)
         startActivity(intent)
     }
@@ -85,7 +85,7 @@ class login : AppCompatActivity() {
     }
 
     private fun iniciar_recuperacion() {
-        val intent = Intent(this, Recuperar::class.java)
+        val intent = Intent(this, RecoveryPasswordActivity::class.java)
         startActivity(intent)
 
     }

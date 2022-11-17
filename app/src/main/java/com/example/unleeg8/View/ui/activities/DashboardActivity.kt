@@ -62,9 +62,9 @@ class DashboardActivity : AppCompatActivity() {
                     loadFragment(fragment)
                     true
                 }
-                R.id.nav_users -> {
+                R.id.nav_maps -> {
                     toolbar?.title = "Mapas"
-                    fragment = ShipFragment()
+                    fragment = MapFragment()
                     loadFragment(fragment)
                     true
                 }
@@ -79,14 +79,14 @@ class DashboardActivity : AppCompatActivity() {
         transaction.commit()
     }
     private fun updateUI(user: FirebaseUser?) {
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         Toast.makeText(this, "Cierre de Sesión Exitoso", Toast.LENGTH_SHORT)
             .show()
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

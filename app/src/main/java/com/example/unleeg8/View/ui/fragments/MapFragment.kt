@@ -16,7 +16,7 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
-class ShipFragment : Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment(), OnMapReadyCallback {
 
     lateinit var googleMap: GoogleMap
 
@@ -27,7 +27,7 @@ class ShipFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.mapas, container, false)
+        val view = inflater.inflate(R.layout.fragment_map, container, false)
         return view
     }
 
@@ -35,25 +35,6 @@ class ShipFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view,savedIstanceState)
         val mapFragment = this.childFragmentManager.findFragmentById(R.id.mapGoogle) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        //Open Street Maps
-        mapView= view.findViewById(R.id.mapOpenStreet)
-        mapView.setTileSource(TileSourceFactory.MAPNIK)
-
-        //Open Street Map Location
-
-        val geoPoint= GeoPoint(5.0700275, -75.513817)
-        val mapController = mapView.controller
-        mapController.setZoom(16.0)
-        mapController.setCenter(geoPoint)
-
-        //Marcador
-
-        val marker = Marker(mapView)
-        marker.setPosition(geoPoint)
-        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        marker.setTitle("UnLeeG8")
-        mapView.overlays.add(marker)
 
     }
 

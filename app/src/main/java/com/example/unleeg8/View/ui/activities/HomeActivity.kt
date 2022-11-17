@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class Home : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val TAG = "Registro"
@@ -45,7 +45,7 @@ class Home : AppCompatActivity() {
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
 
@@ -53,7 +53,7 @@ class Home : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

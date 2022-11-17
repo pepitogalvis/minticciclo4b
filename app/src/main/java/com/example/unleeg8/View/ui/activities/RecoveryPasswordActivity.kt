@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class Recuperar : AppCompatActivity() {
+class RecoveryPasswordActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val TAG = "Recuperar"
@@ -55,7 +55,7 @@ class Recuperar : AppCompatActivity() {
     }
 
     private fun updateui() {
-        val intent = Intent(this, login::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
 

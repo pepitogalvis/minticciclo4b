@@ -6,15 +6,15 @@
         android:enabled="true"
         android:title="Inicio" />
     <item
-        android:id="@+id/nav_users"
-        android:icon="@drawable/ic_users"
+        android:id="@+id/nav_maps"
+        android:icon="@drawable/ic_map"
         android:enabled="true"
-        android:title="Usuarios" />
+        android:title="Mapas" />
     <item
         android:id="@+id/nav_addblogs"
         android:icon="@drawable/ic_add"
         android:enabled="true"
-        android:title="Nueva Entrada" />
+        android:title="+ Entrada" />
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_account"
