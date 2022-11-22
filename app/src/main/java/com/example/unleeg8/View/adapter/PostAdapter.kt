@@ -11,7 +11,9 @@ import com.example.unleeg8.R
 import com.squareup.picasso.Picasso
 
 
-class PostAdapter(private val postList: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
+class PostAdapter: RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
+
+    private val postList = ArrayList<Post>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,6 +31,14 @@ class PostAdapter(private val postList: ArrayList<Post>) : RecyclerView.Adapter<
 
     override fun getItemCount(): Int {
         return postList.size
+    }
+
+    fun updatePostList(userList : List<Post>){
+
+        this.postList.clear()
+        this.postList.addAll(userList)
+        notifyDataSetChanged()
+
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
