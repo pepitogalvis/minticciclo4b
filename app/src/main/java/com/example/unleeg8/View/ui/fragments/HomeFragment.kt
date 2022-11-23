@@ -6,19 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.unleeg8.R
+import com.example.unleeg8.View.adapter.PostAdapter
+import com.example.unleeg8.ViewModel.PostViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+
+
 
 class HomeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val TAG = "Registro"
+    val viewModel by lazy { ViewModelProvider(this).get(PostViewModel::class.java) }
+    private lateinit var recyclerpost: RecyclerView
+    lateinit var adapter: PostAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,23 +35,36 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         auth = Firebase.auth
-        val view: View = inflater.inflate(R.layout.fragment_home, container,false)
+        val view: View = inflater.inflate(R.layout.activity_userposts_feed, container,false)
         val user = Firebase.auth.currentUser
         val nombre_usuario = user?.displayName.toString()
-        val texto_bienvenida: TextView = view.findViewById(R.id.tv_home)
 
         if (user != null) {
-            Log.d(TAG, "Nombre de usuario: $nombre_usuario")
-            texto_bienvenida.text = "$nombre_usuario"
 
         } else {
 
         }
 
+        recyclerpost = view.findViewById(R.id.recyclerView)
+        adapter= PostAdapter()
+        recyclerpost.layoutManager= LinearLayoutManager(context)
+        recyclerpost.adapter=adapter
+        observeData()
         return view
     }
 
     companion object {
         fun newInstance() = HomeFragment()
+    }
+
+    fun observeData() {
+
+        viewModel.allPosts.observe(viewLifecycleOwner, Observer {
+
+            adapter.updatePostList(it)
+            Log.d(TAG,"statusString : ${it.size}")
+
+        })
+
     }
 }

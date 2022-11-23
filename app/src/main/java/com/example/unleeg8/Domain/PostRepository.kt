@@ -1,49 +1,37 @@
 package com.example.unleeg8.Domain
 
+
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.unleeg8.Model.Post
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 
 class PostRepository {
 
-    private  val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("Posts")
+    private val database = Firebase.database
+    private val postFeedReference = database.getReference("Posts")
 
-    @Volatile private var INSTANCE : PostRepository ?= null
-
-    fun getInstance() : PostRepository {
-        return INSTANCE ?: synchronized(this) {
-
-            val instance = PostRepository()
-            INSTANCE = instance
-            instance
-        }
-    }
-
-    fun loadPosts(postList: MutableLiveData<List<Post>>){
-
-        databaseReference.addValueEventListener(object : ValueEventListener{
+    fun fetchPostsFeed(liveData: MutableLiveData<List<Post>>) {
+        postFeedReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                try {
-
-                    val _postList: List<Post> = snapshot.children.map { dataSnapshot ->
-
-                        dataSnapshot.getValue(Post::class.java)!!
-
-                    }
-
-                    postList.postValue(_postList)
-
-                }catch (e : Exception){
-
+                val postsFeedItems: List<Post> = snapshot.children.map { dataSnapshot ->
+                    dataSnapshot.getValue((Post::class.java))!!
                 }
+
+                liveData.postValue(postsFeedItems)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
     }
+
+
 
 }

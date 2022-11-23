@@ -2,21 +2,22 @@ package com.example.unleeg8.ViewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.unleeg8.Domain.PostRepository
 import com.example.unleeg8.Model.Post
 
-class PostViewModel {
+class PostViewModel : ViewModel() {
 
-    private val repository : PostRepository
-    private val _allPosts = MutableLiveData<List<Post>>()
-    val allPosts : LiveData<List<Post>> = _allPosts
+    private val repository = PostRepository()
 
+    private val _newsPostLiveData = MutableLiveData<List<Post>>()
+    val postFeedLiveData: LiveData<List<Post>> = _newsPostLiveData
 
-    init {
+    fun fetchPostsFeed(){
+        repository.fetchPostsFeed(_newsPostLiveData)
+    }
 
-        repository = PostRepository().getInstance()
-        repository.loadPosts(_allPosts)
 
     }
 
-}
+
