@@ -25,8 +25,8 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
         val currentitem = postList[position]
 
         Picasso.get().load(currentitem.postimage).into(holder.postimageIV)
-        holder.posttitleTV.text = currentitem.posttitle
-        holder.postdescriptionTV.text = currentitem.postdescription
+        holder.posttitleTV.hint = currentitem.posttitle
+        holder.postdescriptionTV.hint = currentitem.postdescription
     }
 
     override fun getItemCount(): Int {
